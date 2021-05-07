@@ -10,7 +10,8 @@ app = Flask(__name__)
 app.config['MYSQL_DATABASE_USER'] = 'root'
 app.config['MYSQL_DATABASE_PASSWORD'] = 'mudar123'
 app.config['MYSQL_DATABASE_DB'] = 'teste'
-app.config['MYSQL_DATABASE_HOST'] = '172.17.0.7'
+app.config['MYSQL_DATABASE_HOST'] = '172.17.0.3'
+#app.config['MYSQL_DATABASE_HOST'] = '172.17.0.7'
 mysql.init_app(app)
 
 
@@ -29,6 +30,10 @@ def signUp():
         _name = request.form['inputName']
         _email = request.form['inputEmail']
         _password = request.form['inputPassword']
+
+        print(_name)
+        print(_email)
+        print(_password)
 
         # validate the received values
         if _name and _email and _password:
@@ -56,6 +61,6 @@ def signUp():
         conn.close()
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
+    port = int(os.environ.get("PORT", 5050))
     app.run(host='0.0.0.0', port=port)
 
