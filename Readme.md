@@ -3,18 +3,26 @@ exercicio de docker com 2 container
 2 - flask web
 
   docker pull mysql:5.7
+
   docker run --name mysql5 -e MYSQL_ROOT_PASSWORD=mudar123 -p 3307:3307 -d mysql:5.7
+
   docker ps
+
   docker network inspect bridge
+
+## colocar o parametro host de acordo com o resultado do comando acima
   mysql -uroot -p --host=172.17.0.*
+
   pip install flask-mysql
 
  docker image build -t python-web .
+
  docker run -p 5050:5050 -d python-web
 
 DOCKER COMPOSE
 
   docker network inspect bridge
+
   
   CREATE TABLE `tbl_user` (
   `user_id` BIGINT NOT NULL AUTO_INCREMENT,
@@ -23,6 +31,7 @@ DOCKER COMPOSE
   `user_password` VARCHAR(45) NULL,
   PRIMARY KEY (`user_id`));
   
+
 DELIMITER //
 CREATE PROCEDURE `sp_createUser`(   IN p_name VARCHAR(20),
     IN p_username VARCHAR(20),    IN p_password VARCHAR(20))
@@ -46,5 +55,8 @@ BEGIN
 END //
 DELIMITER ;
 
+
 docker-compose up
+
 docker-compose ps
+
