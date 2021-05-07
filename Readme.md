@@ -21,8 +21,18 @@ exercicio de docker com 2 container
 
 DOCKER COMPOSE
 
+  docker-compose up
+
   docker network inspect bridge
 
+  docker-compose ps
+
+  ## conforme id do container retornado do comando acima
+  docker exec -it e9ce83871c83 /bin/bash
+
+  create schema teste;
+
+  use teste;
   
   CREATE TABLE `tbl_user` (
   `user_id` BIGINT NOT NULL AUTO_INCREMENT,
@@ -56,7 +66,4 @@ END //
 DELIMITER ;
 
 
-docker-compose up
-
-docker-compose ps
 
