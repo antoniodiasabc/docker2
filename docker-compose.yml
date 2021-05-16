@@ -2,13 +2,13 @@
 web:
   build: .
   working_dir: /data
-  command: python app.py
+  command: python app3.py
   links:
     - db
   volumes:
     - .:/data
   ports:
-    - "5050:5050"
+    - "5000:5000"
 
 db:
   image: mysql:5.7

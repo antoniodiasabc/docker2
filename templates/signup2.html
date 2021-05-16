@@ -8,7 +8,9 @@
     <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
-
+    <link href="../static/css/signup.css" rel="stylesheet">
+    <script src="../static/js/jquery-1.11.2.js"></script>
+    <script src="../static/js/signUp.js"></script>
    
   </head>
 
@@ -18,19 +20,25 @@
       <div class="header">
         <nav>
           <ul class="nav nav-pills pull-right">
-            <li role="presentation" class="active"><a href="/">Home</a></li>
-            <li role="presentation"><a href="/list">List all</a></li>
- 	    <li role="presentation"><a href="/showSignUp">Sign Up</a></li>
+            <li role="presentation" ><a href="/">Home</a></li>
           </ul>
         </nav>
         <h3 class="text-muted">Python Flask App</h3>
       </div>
 
-      <div class="jumbotron">
-        <h1>Bucket List App</h1>
-        <p class="lead"></p>
-        <p><a class="btn btn-lg btn-success" href="showSignUp" role="button">Sign up today</a></p>
-      </div>
+
+<table>
+<tr><td> Nomes </td></tr>
+{% for item in datas %}
+<tr>
+    <td>{{item[0]}}</td>
+    <td>{{item[1]}}</td>
+</tr>
+{% endfor %}
+</table>
+
+
+
     </div>
   </body>
 </html>

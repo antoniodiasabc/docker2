@@ -24,52 +24,19 @@ def showSignUp():
     return render_template('signup.html')
 
 
-@app.route('/signUp',methods=['POST','GET'])
+@app.route('/list',methods=['POST','GET'])
 def signUp():
     try:
-        _name = request.form['inputName']
-        _email = request.form['inputEmail']
-        _password = request.form['inputPassword']
-
-        print(_name)
-        print(_email)
-        print(_password)
-
-        # validate the received values
-        if _name and _email and _password:
             
-            # All Good, let's call MySQL
             
             conn = mysql.connect()
             cursor = conn.cursor()
             _hashed_password = _password
-            cursor.callproc('sp_createUser',(_name,_email,_hashed_password))
-            data = cursor.fetchall()
-            print(data);
-
-            if len(data) == 0:
-                conn.commit()
-            else:
-                return json.dumps({'error':str(data[0])})
-
-            return render_template('signup2.html', posts=data)
-        else:
-            return json.dumps({'html':'<span>Enter the required fields</span>'})
-
-    except Exception as e:
-        return json.dumps({'error':str(e)})
-    finally:
-        cursor.close() 
-        conn.close()
-
-@app.route('/list',methods=['POST','GET'])
-def list():
-    try:
-            conn = mysql.connect()
-            cursor = conn.cursor()
-            cursor.execute ('select user_name from tbl_user')
+            cursor.execute ('select user_name from tbl_user') 
             data = cursor.fetchall()
             print(data[0]);
+            for x in range(len(data)):
+                print(data[x])
 
             conn.commit()
             return render_template('signup2.html', datas=data)
@@ -77,10 +44,8 @@ def list():
     except Exception as e:
         return json.dumps({'error':str(e)})
     finally:
-        cursor.close()
+        cursor.close() 
         conn.close()
-
-
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))

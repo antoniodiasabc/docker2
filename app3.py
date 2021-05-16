@@ -38,21 +38,13 @@ def signUp():
         # validate the received values
         if _name and _email and _password:
             
-            # All Good, let's call MySQL
-            
             conn = mysql.connect()
             cursor = conn.cursor()
             _hashed_password = _password
-            cursor.callproc('sp_createUser',(_name,_email,_hashed_password))
-            data = cursor.fetchall()
-            print(data);
+            cursor.execute('insert into tbl_user (user_name, user_username, user_password) VALUES (%s, %s, %s)', ( _name,_email,_hashed_password))
+            conn.commit()
 
-            if len(data) == 0:
-                conn.commit()
-            else:
-                return json.dumps({'error':str(data[0])})
-
-            return render_template('signup2.html', posts=data)
+            return render_template('signup.html')
         else:
             return json.dumps({'html':'<span>Enter the required fields</span>'})
 
@@ -67,7 +59,7 @@ def list():
     try:
             conn = mysql.connect()
             cursor = conn.cursor()
-            cursor.execute ('select user_name from tbl_user')
+            cursor.execute ('select user_name, user_username from tbl_user')
             data = cursor.fetchall()
             print(data[0]);
 
