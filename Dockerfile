@@ -1,4 +1,4 @@
-FROM python:3.6.1-alpine
+FROM python:3.7-slim
 RUN pip install flask
 RUN pip install flask-mysql
 RUN mkdir templates
