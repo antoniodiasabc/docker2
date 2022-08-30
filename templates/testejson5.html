@@ -1,0 +1,46 @@
+<html>
+    <body>
+        <form id="name_form">
+            <label>First Name:</label><input type="text" name="first_name"/>
+            <br/>
+            <label>Last Name:</label><input type="text" name="last_name"/>
+            <br/>
+            <select id ="myCombo">
+             <option value="opcao1" selected >futebol</option>
+             <option value="opcao2">voley</option>
+            </select>
+            <input type="submit" value="submit" />
+        </form>
+         <input type="text" id="resp" name="resp" />
+        
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script type="text/javascript">
+            $('#name_form').submit(function(e) {
+                    e.preventDefault();
+
+                    var formobj = {
+                       first: $('[name=first_name]').val(),
+                       last:$('[name=last_name]').val(),
+                       combo: $('#myCombo option:selected').val()
+                    }
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '/api/say_name5',
+                        dataType: 'json',
+                        contentType: 'application/json; charset=utf-8',
+                        data: JSON.stringify(formobj),
+                        success: function(callback) {
+                            console.log(callback);
+                            $('#resp').val('respondeu: ' + callback.first_name);
+                            $('[name=first_name]').val();
+                        },
+                        error: function() {
+                            $(this).html("error!");
+                        }
+                    });
+                });
+        </script>
+    </body>
+</html>
+

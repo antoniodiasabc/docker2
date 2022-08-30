@@ -2,7 +2,7 @@
 web:
   build: .
   working_dir: /data
-  command: python app3.py
+  command: python app2.py
   links:
     - db
   volumes:
