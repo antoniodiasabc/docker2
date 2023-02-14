@@ -10,8 +10,8 @@ exercicio de docker com 2 container
 
   docker network inspect bridge
 
-## colocar o parametro host de acordo com o resultado do comando acima
-  mysql -uroot -p --host=172.17.0.*
+## conectar no mysql
+  mysql -uroot -p 
 
   pip install flask-mysql
 
