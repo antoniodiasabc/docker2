@@ -10,6 +10,8 @@ exercicio de docker com 2 container
 
   docker network inspect bridge
 
+
+# usando o bd
 ## conectar no mysql
   mysql -uroot -p 
 
