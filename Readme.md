@@ -6,29 +6,19 @@ exercicio de docker com 2 container
 
   docker run --name mysql5 -e MYSQL_ROOT_PASSWORD=mudar123 -p 3307:3307 -d mysql:5.7
 
+  docker network inspect bridge (obter o ip do BANCO)
+
   docker ps
 
-  docker network inspect bridge
-
+  ## conforme id do container retornado do comando acima
+  docker exec -it e9ce83871c83 /bin/bash
 
 # usando o bd
 ## conectar no mysql
   mysql -uroot -p 
 
-  pip install flask-mysql
-
- docker image build -t python-web .
-
- docker run -p 5050:5050 -d python-web
-
-DOCKER COMPOSE
-
-  docker-compose up
-
-  docker network inspect bridge
-
-  docker-compose ps
-
+  create schema teste;
+  
   ## conforme id do container retornado do comando acima
   docker exec -it e9ce83871c83 /bin/bash
 
@@ -68,4 +58,19 @@ END //
 DELIMITER ;
 
 
+
+
+rodando a aplicacao 
+  pip install flask-mysql
+
+ docker image build -t python-web .
+
+ docker run -p 5050:5050 -d python-web
+
+DOCKER COMPOSE
+
+  docker-compose up
+
+  docker network inspect bridge
+  
 
