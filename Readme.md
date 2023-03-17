@@ -61,7 +61,10 @@ DELIMITER ;
 
 
 rodando a aplicacao 
-  pip install flask-mysql
+
+ pip install flask
+ 
+ pip install flask-mysql
 
  docker image build -t python-web .
 
