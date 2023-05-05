@@ -1,5 +1,7 @@
 
-web:
+version: "3.9"
+services:
+ web:
   build: .
   working_dir: /data
   command: python app2.py
@@ -10,7 +12,7 @@ web:
   ports:
     - "5000:5000"
 
-db:
+ db:
   image: mysql:5.7
   environment:
       MYSQL_ROOT_PASSWORD: mudar123
